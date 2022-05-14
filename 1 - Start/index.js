@@ -89,17 +89,114 @@ camel case or underscore
 // Implicit Type Conversion ----
 // Turns string numbers into numbers.
 
-let number3 = '10';
-let number4 = '23';
-// const  result2 = number3 - number4; this gets a number
-const  result2 = number3 + number4; // this gets a string
-console.log(result2)
+// let number3 = '10';
+// let number4 = '23';
+// // const  result2 = number3 - number4; this gets a number
+// const  result2 = number3 + number4; // this gets a string
+// console.log(result2)
 
 
+// javascript 7 data types ----
+
+// Primitive data types - string, number, boolean, null, undefined, symbol
+// Object - Arrays, Functions, Objects
+
+// Typeof -
+// Operator (typeof variable) (typeof value)
+
+// String -
+// const text = 'some text'
+
+// Number -
+// const number = 45;
+
+// Boolean -
+// true or false -> let value1 = true; let value2 = false;
+
+// Null -
+// const result = null;
+
+// Undefined -
+// let name;
+
+// Symbol(ES6) -
+// console.log(typeof text);
 
 
+// Arrays, functions, objects ----
+// Arrays [] -, 0 index based
+
+// array
+const friends = [
+ 'Bob',
+ 'Anna',
+ 'Susy',
+ // 10,
+ // null,
+ // undefined
+];
+
+// let bestFriend = friends[2];
+// friends[4] = 'anna'
+// console.log(friends)
+// console.log(friends[4])
+// console.log(bestFriend)
+
+// console.log(friends[3])
+
+//for loop
+// friends.forEach(list => {
+//  console.log(list)
+// })
+// function listItems() {
+//  for(let i = 0; i < friends.length; i++) {
+//   console.log(friends[i])
+//  }
+// }
+// listItems()
+
+// function, parameters, arguments ----
+
+// repeated code takes too long
+// console.log('Hello there Bob')
+// console.log('Hello there Anna')
+// console.log('Hello there Susy')
+// instead make a a function
+// function greeting(person) {
+//  console.log(`Hello there ${person}`)
+// }
+// greeting(friends[0])
+
+// looping a string with different names in an array ----
+// const demo = document.querySelector('#demo');
+// // friends.pop() // removes last item of array
+// friends.push('Angel', 'Amber', 'Travis') // add item to end of array
+// friends.shift() // removes first element in array
+// friends.unshift('Steven') // adds an element to the beginning of an array
+
+// friends.forEach(list => {
+//  demo.innerHTML += `Hello there ${list} <br>`
+//  // console.log(`Hello there ${list}`)
+// })
+
+// using REURN ----
+
+// Below we want to create a function that changes inch to centemeters = 1 inch = 2.54cm
+
+const wallHeight = 80;
+
+function calculate(value) {
+ console.log('The value in cm is : ' + value * 2.54 + ' cm')
+ // const newValue = value * 2.54
+ // return newValue // or just return the equation
+ return value * 2.54
+};
+
+const width = calculate(100);
+const height = calculate(wallHeight);
+
+const dimensions = [width, height]; 
+console.log(dimensions); // this returns undefined because there is no return value in the function above.
 
 
-
-
-
+// Expressions
