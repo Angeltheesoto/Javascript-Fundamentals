@@ -14,12 +14,29 @@
  background-color: blue;
 } */
 
+.colors {
+ background: red;
+ color: white;
+}
+.text {
+ font-size: 2rem;
+ letter-spacing: 1rem;
+}
 
+.red {
+ background: red;
+ color: white;
+}
 
+.blue {
+ background: blue;
+ color: white;
+}
 
-
-
-
-
-
+.title {
+ background: blue;
+ color: white;
+ font-size: 3rem;
+ text-transform: capitalize;
+}
 
