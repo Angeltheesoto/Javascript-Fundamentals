@@ -385,5 +385,291 @@ console.log(btn)
  - CSS - why we should use classList instead of style property.
 */
 
+// styling this way in javascript is more complicated but can be used.
+// const random = document.querySelector('.random');
+// // console.log(random.style);
+// random.style.backgroundColor = 'blue'
+// random.style.color = 'white'
+// random.style.fontSize = '3rem'
+// random.style.textTransform = 'capitalize'
+
+// // this is a better way to style the DOM in javascript.
+// const random = document.querySelector('.random');
+// random.classList.add('title');
+
+
+// Events Overview ---------->
+
+// Click Event ---->
+/*
+ select element
+ addEventListener()
+ what event, what to do
+ */
+
+// const btn = document.querySelector('.btn-x17')
+// const heading = document.querySelector('.h2-x17')
+
+// // use this way of using functions so you can call it whenever.
+// function changeColor() {
+//  let hasClass = heading.classList.contains('red');
+//  if(hasClass === true) {
+//   heading.classList.remove('red');
+//  } else {
+//   heading.classList.add('red')
+//  }
+// }
+// btn.addEventListener('click', changeColor);
+// this is the regular way of creating a function.
+ // btn.addEventListener('click', () => {
+ //  heading.classList.add('red')
+ // })
+
+
+ // Mouse Events ---->
+ /*
+ - click - fires after full action occurs
+ - mousedown - button is pressed
+ - mousedown - button is released
+ - mouseenter - moved onto an element
+ - mouseleave - moved out of an element
+ */
+
+// const heading = document.querySelector('.h2-x18');
+// const btn = document.querySelector('.btn-x18');
+// // your function will run when you click the button
+// btn.addEventListener('click', () => {
+//  console.log('you clicked me')
+// })
+// // your function will run when you click down on the button
+// btn.addEventListener('mousedown', () => {
+//  console.log('down')
+// })
+// // your function will run when you click up on the button
+// btn.addEventListener('mouseup', () => {
+//  console.log('up')
+// })
+
+// heading.addEventListener('mouseenter', () => {
+//  heading.classList.add('blue')
+// })
+
+// heading.addEventListener('mouseleave', () => {
+//  heading.classList.remove('blue')
+// })
+
+
+// Key Events
+/*
+ - keypress - when key is pressed
+ - keydown - when key is down
+ - keyup - when key is released
+*/
+
+// const nameInput = document.getElementById('name');
+
+// nameInput.addEventListener('keypress', () => {
+//  console.log('you presed a key')
+// })
+
+// nameInput.addEventListener('keydown', () => {
+//  console.log('you presed a key')
+// })
+// this shows what keys were pressed and in what order.
+// nameInput.addEventListener('keyup', () => {
+//  console.log(nameInput.value)
+// });
+
+
+// Event Object ---->
+/*
+ - event object argument e, evt
+ - info about trigged event
+ - event.type - Finds out what kind of event it is. ex - click event
+ - event.currentTarget - Targets the element it is on.
+ - this keyword - targets the element its on.
+ - preventDefault() - prevents default behaviour. Stops something from happening.
+*/
+// const heading = document.querySelector('.h2-x20');
+// const btn = document.querySelector('.btn-x20');
+// const link = document.getElementById('link-x20')
+//Targets the element it is on.
+// heading.addEventListener('click', (event) => {
+//  console.log(event.currentTarget)
+//  console.log(this)
+// })
+
+// btn.addEventListener('click', (event) => {
+//  event.currentTarget.classList.add('blue')
+//  console.log(event.type)
+// })
+
+// function someFunc(e){
+//  e.preventDefault();
+// }
+// link.addEventListener('click', someFunc);
+
+
+// currentTarget Vs Target ---->
+/*
+ - currentTarget - always refers to the element to which the event handler has been attached to.
+ - target - identifies the element on which the event occured.
+*/
+// const btns = document.querySelectorAll('.btn-x21')
+
+// btns.forEach( (btn) => {
+//  btn.addEventListener('click', (e) => {
+//   // currentTarget - This turns everything green.
+//   // console.log(e.currentTarget);
+//   // e.currentTarget.style.color = 'green'
+
+//   // Target - This only turns the one you click on turn green
+//   console.log('target',e.target)
+//   e.target.style.color = 'green'
+//  })
+// })
+
+
+// Event Bubbling capturing ---->
+/*
+ - allows select dynamic elements
+ - event propagation - order the events are fired
+ - event bubbling - clicked element first then bubbles up -- default
+ - event capturing - fires at the root and fires until reaches target.
+*/
+
+// const container = document.querySelector('.container');
+// const list = document.querySelector('.list-items');
+
+// function showBubbling(e){
+//  console.log('current target', e.currentTarget);
+//  // console.log('target', e.target);
+//  // if (e.target.classList.contains('link')) {
+//  //  console.log('you clicked it');
+//  // }
+// }
+
+// function stopPropagation(e){
+//  console.log('You clicked')
+//  e.stopPropagation()
+// }
+
+// // targets elements without even targeting them. thats what bubbling does.
+// // list.addEventListener('click', stopPropagation);
+// container.addEventListener('click', showBubbling, {capture: true});
+// document.addEventListener('click', showBubbling, {capture: true});
+// window.addEventListener('click', showBubbling, {capture: true});
+// list.addEventListener('click', showBubbling, {capture: true});
+
+
+// Event Propogation Example ---->
+/*
+ - allows select dynamic elements
+ - event propagation - order the events are fired
+ - event bubbling - clicked element first then bubbles up -- default
+
+*/
+// const container = document.querySelector('.container-x23');
+// const btn = document.querySelector('.btn-x23');
+// // const heading = document.querySelector('.heading-x23');
+
+// function sayHello() {
+//  console.log('Hello there!')
+// }
+
+// btn.addEventListener('click', function() {
+//  const element = document.createElement('h1')
+//  element.classList.add('heading');
+//  element.textContent = `i'm inside the container`
+//  container.appendChild(element)
+// })
+// container.addEventListener('click', function(e){
+//  if(event.target.classList.contains('heading')){
+//   console.log('hello')
+//  }
+// })
+
+// heading.addEventListener('click', sayHello);
+
+
+// Form submit ---->
+/*
+ - submit event listeners -
+ - prevent default
+ - how to get a value
+*/
+
+// const form = document.getElementById('form-x24');
+// const name = document.getElementById('name-x24');
+// const password = document.getElementById('password-x24');
+
+// // this lets you access data that was input into the form.
+// form.addEventListener('submit', function(e) {
+//  e.preventDefault()
+//  console.log('form submited');
+//  console.log(name.value)
+//  console.log(password.value)
+// })
+
+
+// Local Storage ---->
+/*
+ - why use local storage ? - because it keeps your data even when you close the browser.
+ - Web storage API - provided by browser
+ - session storage - passes data while our tab is still open.
+ - local storage - passes even when you close the browser.
+ - setItem, getItem, removeItem, clear
+ - localStorage.setItem('name', 'angel');
+ - sessionStorage.setItem('name', 'angel');
+*/
+// localStorage.setItem('name', 'angel');
+// sessionStorage.setItem('name', 'angel');
+
+// localStorage.setItem('name', 'Angel');
+// localStorage.setItem('friend', 'peter');
+// localStorage.setItem('job', 'developer');
+// localStorage.setItem('address', 'street 123');
+
+// const name = localStorage.getItem('name');
+// console.log(name);
+// localStorage.removeItem('name')
+// // wont show becuse i cleared out the name above.
+// const anotherName = localStorage.getItem('name');
+// console.log(anotherName)
+// // clears out all of local storage.
+// localStorage.clear()
+
+
+// Lical Storage with Multiple values ---->
+/*
+ - JSON.stringify() - 
+ - JSON.parse() - 
+*/
+// const friends = ['john', 'peter', 'bob'];
+
+// localStorage.setItem('friends', JSON.stringify(friends));
+
+// const values = JSON.parse(localStorage.getItem('friends'));
+// console.log(values[2]);
+
+// let fruits;
+
+// if(localStorage.getItem('fruits')){
+//  fruits = JSON.parse(localStorage.getItem('fruits'));
+// } else {
+//  fruits = [];
+// }
+
+// console.log(fruits);
+// // fruits.push('apple')
+// fruits.push('orange');
+// localStorage.setItem('fruits', JSON.stringify(fruits))
+
+
+
+
+
+
+
 
 
